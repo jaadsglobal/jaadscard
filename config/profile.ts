@@ -2,7 +2,7 @@ export const profile = {
   name: "Juan Guillermo Márquez Pérez",
   role: "Consultor digital",
   company: "JaaDs Global",
-  bio: "Estrategia digital, automatización y experiencias web premium para negocios que quieren crecer con claridad.",
+  bio: "Sistemas comerciales con IA para captar, responder y convertir más oportunidades en clientes.",
   profileImage: "/guillermo-profile-card.png",
   logoImage: "/jaads-global-logo.jpeg",
   socialImage: "/social-card.svg",
