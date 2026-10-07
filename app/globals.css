@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #060708;
+  --foreground: #f8fafc;
+  --muted: #a7b0bd;
+  --card: rgba(19, 22, 26, 0.72);
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #e1192d;
+  --accent-strong: #ff4053;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-width: 320px;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--background);
+}
+
+body {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(225, 25, 45, 0.16), transparent 22rem),
+    radial-gradient(circle at 0% 18%, rgba(225, 25, 45, 0.08), transparent 18rem),
+    linear-gradient(145deg, #050607 0%, #11151a 48%, #050607 100%);
+  color: var(--foreground);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(255, 64, 83, 0.28);
+}
+
+.glass-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .soft-enter {
+    animation: soft-enter 520ms ease both;
+  }
+
+  @keyframes soft-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

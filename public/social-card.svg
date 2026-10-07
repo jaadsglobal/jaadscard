@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#050607"/>
+  <circle cx="600" cy="80" r="340" fill="#E1192D" fill-opacity="0.14"/>
+  <rect x="330" y="120" width="540" height="390" rx="48" fill="#11151A" stroke="white" stroke-opacity="0.12"/>
+  <circle cx="600" cy="240" r="54" fill="#E1192D"/>
+  <text x="600" y="344" text-anchor="middle" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Juan Guillermo Márquez Pérez</text>
+  <text x="600" y="396" text-anchor="middle" fill="#A7B0BD" font-family="Arial, Helvetica, sans-serif" font-size="26">Consultor digital / JaaDs Global</text>
+  <rect x="492" y="432" width="216" height="48" rx="24" fill="#E1192D"/>
+  <text x="600" y="464" text-anchor="middle" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Tarjeta digital</text>
+</svg>
