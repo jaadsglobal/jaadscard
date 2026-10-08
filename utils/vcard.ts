@@ -1,6 +1,7 @@
 import type { Profile } from "@/config/profile";
 import type { Contact } from "@/config/contact";
-import { whatsappUrl } from "@/utils/links";
+
+const vcardTitle = "CEO & Fundador";
 
 function escapeVCard(value: string) {
   return value
@@ -27,33 +28,19 @@ function splitName(profile: Profile) {
 
 export function createVCard(profile: Profile, contact: Contact) {
   const { first, last } = splitName(profile);
-  const note = [
-    profile.bio,
-    contact.calendar ? `Reserva una reunión: ${contact.calendar}` : "",
-    contact.whatsapp ? `WhatsApp: ${whatsappUrl(contact)}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  const cardUrl = profile.metadata.canonical;
 
   const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
     `N:${escapeVCard(last)};${escapeVCard(first)};;;`,
     `FN:${escapeVCard(profile.name)}`,
-    `TITLE:${escapeVCard(profile.role)}`,
+    `TITLE:${escapeVCard(vcardTitle)}`,
     `ORG:${escapeVCard(profile.company)}`,
     `TEL;TYPE=CELL,VOICE:${contact.phone}`,
-    `TEL;TYPE=WHATSAPP:${contact.whatsapp}`,
     `EMAIL;TYPE=INTERNET:${contact.email}`,
-    contact.website ? `URL;TYPE=WORK:${contact.website}` : "",
-    contact.linkedin ? `URL;TYPE=LinkedIn:${contact.linkedin}` : "",
-    contact.instagram ? `URL;TYPE=Instagram:${contact.instagram}` : "",
-    contact.calendar ? `URL;TYPE=Reserva:${contact.calendar}` : "",
-    contact.whatsapp ? `URL;TYPE=WhatsApp:${whatsappUrl(contact)}` : "",
-    contact.address ? `ADR;TYPE=WORK:;;${escapeVCard(contact.address)};;;;` : "",
-    contact.linkedin ? `X-SOCIALPROFILE;TYPE=linkedin:${contact.linkedin}` : "",
-    contact.instagram ? `X-SOCIALPROFILE;TYPE=instagram:${contact.instagram}` : "",
-    note ? `NOTE:${escapeVCard(note)}` : "",
+    `URL:${cardUrl}`,
+    `NOTE:${escapeVCard(profile.bio)}`,
     "END:VCARD",
   ].filter(Boolean);
 
