@@ -17,7 +17,7 @@ export function PrimaryCTA({ profile }: PrimaryCTAProps) {
         target="_blank"
         rel="noreferrer"
         aria-label={`Solicitar diagnóstico con ${profile.name}`}
-        className="min-h-16 text-base"
+        className="cta-pulse min-h-16 text-base"
       />
       <p className="mt-2 text-center text-xs font-medium text-slate-400">
         30 min · Analizamos tu proceso comercial
