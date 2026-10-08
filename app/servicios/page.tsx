@@ -55,6 +55,8 @@ const services = [
   },
 ];
 
+const calendarHref = process.env.CONTACT_CALENDAR || "/api/contact/calendar";
+
 export default function ServicesPage() {
   return (
     <main
@@ -113,7 +115,7 @@ export default function ServicesPage() {
 
           <section className="mt-6" aria-label="Diagnóstico">
             <a
-              href="/api/contact/calendar"
+              href={calendarHref}
               target="_blank"
               rel="noreferrer"
               className="flex min-h-16 items-center justify-center gap-2 rounded-2xl bg-[var(--accent)] px-3 text-base font-semibold text-white shadow-[0_16px_38px_rgba(225,25,45,0.3)] transition hover:brightness-110"
