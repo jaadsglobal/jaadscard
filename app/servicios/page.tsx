@@ -6,7 +6,6 @@ import {
   Bot,
   CalendarCheck,
   Globe2,
-  MapPinned,
   Megaphone,
   Search,
   Workflow,
@@ -17,7 +16,7 @@ import { profile } from "@/config/profile";
 export const metadata: Metadata = {
   title: `Servicios | ${profile.company}`,
   description:
-    "Servicios principales de JaaDs Global: agentes de IA, CRM, automatizaciones, webs, publicidad, SEO local, prospección B2B y analítica.",
+    "Servicios principales de JaaDs Global: agentes de IA, CRM, automatizaciones, webs, publicidad, prospección B2B y analítica.",
   alternates: {
     canonical: "/servicios",
   },
@@ -43,11 +42,6 @@ const services = [
     title: "Google y Meta Ads",
     description: "Campañas enfocadas en demanda real, leads cualificados y control de inversión.",
     icon: Megaphone,
-  },
-  {
-    title: "SEO local",
-    description: "Presencia local más visible para negocios que necesitan atraer clientes cercanos.",
-    icon: MapPinned,
   },
   {
     title: "Prospección B2B",
