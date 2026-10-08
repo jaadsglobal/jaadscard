@@ -8,14 +8,14 @@ type ProfileHeaderProps = {
 export function ProfileHeader({ profile }: ProfileHeaderProps) {
   return (
     <header className="text-center">
-      <div className="mx-auto mb-6 flex size-24 items-center justify-center overflow-hidden rounded-full border border-[var(--accent)]/70 bg-white p-2 shadow-[0_0_28px_rgba(225,25,45,0.24)]">
+      <div className="mx-auto mb-6 flex size-20 items-center justify-center overflow-hidden rounded-full border border-[var(--accent)]/70 bg-white p-2 shadow-[0_0_24px_rgba(225,25,45,0.22)]">
         <Image
           src={profile.logoImage}
           width={160}
           height={160}
           alt={`Logo de ${profile.company}`}
           priority
-          className="relative -top-1 size-[110%] max-w-none object-contain object-center"
+          className="relative -top-0.5 size-[104%] max-w-none object-contain object-center"
         />
       </div>
       <div className="relative mx-auto size-28 overflow-hidden rounded-full border border-[var(--accent)] bg-black shadow-[0_0_28px_rgba(225,25,45,0.24)] min-[390px]:size-32">
@@ -40,6 +40,9 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
         </p>
         <p className="mx-auto mt-3 max-w-[19rem] text-pretty text-sm leading-6 text-slate-300">
           {profile.bio}
+        </p>
+        <p className="mt-3 text-xs font-medium tracking-[0.08em] text-slate-500">
+          {profile.location}
         </p>
       </div>
     </header>
