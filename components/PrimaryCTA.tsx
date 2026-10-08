@@ -8,17 +8,20 @@ type PrimaryCTAProps = {
 
 export function PrimaryCTA({ profile }: PrimaryCTAProps) {
   return (
-    <section className="mt-3" aria-label="Reserva">
+    <section className="mt-3" aria-label="Diagnóstico">
       <ActionButton
         href="/api/contact/calendar"
         icon={CalendarCheck}
-        label="Reservar reunión"
+        label="Solicitar diagnóstico"
         variant="accent"
         target="_blank"
         rel="noreferrer"
-        aria-label={`Reservar reunión con ${profile.name}`}
+        aria-label={`Solicitar diagnóstico con ${profile.name}`}
         className="min-h-16 text-base"
       />
+      <p className="mt-2 text-center text-xs font-medium text-slate-400">
+        30 min · Analizamos tu proceso comercial
+      </p>
       <ActionButton
         href="/servicios"
         icon={ListChecks}
