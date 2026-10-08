@@ -1,5 +1,6 @@
 import type { Profile } from "@/config/profile";
 import type { Contact } from "@/config/contact";
+import { whatsappUrl } from "@/utils/links";
 
 function escapeVCard(value: string) {
   return value
@@ -9,7 +10,15 @@ function escapeVCard(value: string) {
     .replace(/;/g, "\\;");
 }
 
-function splitName(fullName: string) {
+function splitName(profile: Profile) {
+  if (profile.givenName || profile.familyName) {
+    return {
+      first: profile.givenName,
+      last: profile.familyName,
+    };
+  }
+
+  const fullName = profile.name;
   const parts = fullName.trim().split(/\s+/);
   const first = parts.shift() ?? "";
   const last = parts.join(" ");
@@ -17,7 +26,15 @@ function splitName(fullName: string) {
 }
 
 export function createVCard(profile: Profile, contact: Contact) {
-  const { first, last } = splitName(profile.name);
+  const { first, last } = splitName(profile);
+  const note = [
+    profile.bio,
+    contact.calendar ? `Reserva una reunión: ${contact.calendar}` : "",
+    contact.whatsapp ? `WhatsApp: ${whatsappUrl(contact)}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -28,12 +45,17 @@ export function createVCard(profile: Profile, contact: Contact) {
     `TEL;TYPE=CELL,VOICE:${contact.phone}`,
     `TEL;TYPE=WHATSAPP:${contact.whatsapp}`,
     `EMAIL;TYPE=INTERNET:${contact.email}`,
-    `URL:${contact.website}`,
-    `ADR;TYPE=WORK:;;${escapeVCard(contact.address)};;;;`,
-    `X-SOCIALPROFILE;TYPE=linkedin:${contact.linkedin}`,
-    `X-SOCIALPROFILE;TYPE=instagram:${contact.instagram}`,
+    contact.website ? `URL;TYPE=WORK:${contact.website}` : "",
+    contact.linkedin ? `URL;TYPE=LinkedIn:${contact.linkedin}` : "",
+    contact.instagram ? `URL;TYPE=Instagram:${contact.instagram}` : "",
+    contact.calendar ? `URL;TYPE=Reserva:${contact.calendar}` : "",
+    contact.whatsapp ? `URL;TYPE=WhatsApp:${whatsappUrl(contact)}` : "",
+    contact.address ? `ADR;TYPE=WORK:;;${escapeVCard(contact.address)};;;;` : "",
+    contact.linkedin ? `X-SOCIALPROFILE;TYPE=linkedin:${contact.linkedin}` : "",
+    contact.instagram ? `X-SOCIALPROFILE;TYPE=instagram:${contact.instagram}` : "",
+    note ? `NOTE:${escapeVCard(note)}` : "",
     "END:VCARD",
-  ];
+  ].filter(Boolean);
 
   return `${lines.join("\r\n")}\r\n`;
 }

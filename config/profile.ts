@@ -1,5 +1,7 @@
 export const profile = {
   name: "Juan Guillermo Márquez Pérez",
+  givenName: "Juan Guillermo",
+  familyName: "Márquez Pérez",
   role: "Consultor digital",
   company: "JaaDs Global",
   bio: "Sistemas comerciales con IA para captar, responder y convertir más oportunidades en clientes.",
